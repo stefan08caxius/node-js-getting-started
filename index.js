@@ -30,9 +30,14 @@ connection.connect(function(err) {
       .set('views', path.join(__dirname, 'views'))
       .set('view engine', 'ejs')
       .get('/cool', (req, res) => {
-
-              res.send({pippo : 'risp_tempo'});
-            
+        connection.query("SELECT * FROM 'user';" , function (err, risp_tempo) {
+            if (err) throw err;
+            if(risp_tempo.length === 1){
+                res.send(risp_tempo);
+            } else {
+              res.send('risp_tempo');
+            }
+        })
         })
       .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 })
