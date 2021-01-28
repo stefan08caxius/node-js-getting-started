@@ -33,7 +33,7 @@ connection.connect(function(err) {
 
       .get("/cool", (req, res) => {
 
-        connection.query("SELECT * FROM USER;" , function (err, risp_tempo) {
+        connection.query("SELECT * FROM 'user';" , function (err, risp_tempo) {
             if (err) throw err;
             if(risp_tempo.length === 1){
                 res.send(risp_tempo);
