@@ -24,7 +24,7 @@ connection.connect(function(err) {
 
     // parse requests of content-type - application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: true }));
-
+/*
     app
       .use(express.static(path.join(__dirname, 'public')))
       .set('views', path.join(__dirname, 'views'))
@@ -40,4 +40,5 @@ connection.connect(function(err) {
         })
         })
       .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+      */
 })
