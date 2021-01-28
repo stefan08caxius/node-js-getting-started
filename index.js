@@ -24,15 +24,18 @@ connection.connect(function(err) {
 
     // parse requests of content-type - application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: true }));
+
+    app
+      .use(express.static(path.join(__dirname, 'public')))
+      .set('views', path.join(__dirname, 'views'))
+      .set('view engine', 'ejs')
+      .get('/', (req, res) => res.render('pages/index'))
+
+      .get('/cool', (req, res) => res.send({username: 'pippo'}))
+
+      .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
 });
 
 
-app
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-
-  .get('/cool', (req, res) => res.send({username: 'pippo'}))
-
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
