@@ -5,6 +5,24 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
 
+const connection = mysql.createConnection({
+  host: 'sql7.freemysqlhosting.net',
+  port: 3306,
+  user: 'sql7389367',
+  password: 'edFV3gSUZ6',
+  database: 'sql7389367'
+});
+
+connection.connect(function(err) {
+
+  if (err) {
+      return console.error('error: ' + err.message);
+  }
+  
+});
+
+
+
 app
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
