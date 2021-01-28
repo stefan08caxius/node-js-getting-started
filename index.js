@@ -31,7 +31,25 @@ connection.connect(function(err) {
       .set('view engine', 'ejs')
       .get('/', (req, res) => res.render('pages/index'))
 
-      .get('/cool', (req, res) => res.send({username: 'pippo'}))
+      .get("/cool", (req, res) => {
+
+        connection.query("SELECT * FROM USER;" , function (err, risp_tempo) {
+
+            if (err) throw err;
+
+            if(risp_tempo.length === 1){
+
+                console.log(risp_tempo[0]);
+                if (risp_tempo[0].username == 'topolino'){
+                    console.log('ok');
+                }
+                res.json(risp_tempo);
+            } else {
+
+                console.log('\x1b[31m', 'NESSUN DATO RILEVATO PER TEMPO **********************');
+
+            }
+        })
 
       .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
