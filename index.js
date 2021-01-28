@@ -2,68 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
-const app = express();
-
-const path = require('path')
-const PORT = process.env.PORT || 5000
-
-const connection = mysql.createConnection({
-  host: 'sql7.freemysqlhosting.net',
-  port: 3306,
-  user: 'sql7389367',
-  password: 'edFV3gSUZ6',
-  database: 'sql7389367'
-});
 
 
-connection.connect(function(err) {
 
-  if (err) {
-      return console.error('error: ' + err.message);
-  }
-
-  console.log(connection.state);
-  console.log('Connected to the MySQL server.');
-  console.log(connection.state);
-
-  //var corsOptions = {
-  //origin: "http://localhost:8081"
-  //};
-
-  //app.use(cors(corsOptions));
-
-  // parse requests of content-type - application/json
-  app.use(bodyParser.json());
-
-  // parse requests of content-type - application/x-www-form-urlencoded
-  app.use(bodyParser.urlencoded({ extended: true }));
-
-  // simple route
-  app.get("/cool", (req, res) => {
-
-      connection.query("SELECT * FROM sql7389367.USER;" , function (err, risp_tempo) {
-
-          if (err) throw err;
-
-          if(risp_tempo.length === 1){
-
-              console.log(risp_tempo[0]);
-              if (risp_tempo[0].username == 'topolino'){
-                  console.log('ok');
-              }
-              res.json(risp_tempo);
-          } else {
-
-              console.log('\x1b[31m', 'NESSUN DATO RILEVATO PER TEMPO **********************');
-
-          }
-      });
-  
-  //res.json({ message: "Welcome to bezkoder application." });
-  });
-});
-
-/*
 express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
@@ -71,5 +12,4 @@ express()
   .get('/', (req, res) => res.render('pages/index'))
   .get('/cool', (req, res) => res.send({username: 'pippo'}))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-*/
-// set port, listen for requests
+
