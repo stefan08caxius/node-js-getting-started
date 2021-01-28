@@ -18,9 +18,13 @@ connection.connect(function(err) {
   if (err) {
       return console.error('error: ' + err.message);
   }
-  
-});
 
+    // parse requests of content-type - application/json
+    app.use(bodyParser.json());
+
+    // parse requests of content-type - application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: true }));
+});
 
 
 app
