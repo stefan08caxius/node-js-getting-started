@@ -36,4 +36,3 @@ connection.connect(function(err) {
         })
       .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 })
-})
