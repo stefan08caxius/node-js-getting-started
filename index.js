@@ -34,20 +34,11 @@ connection.connect(function(err) {
       .get("/cool", (req, res) => {
 
         connection.query("SELECT * FROM USER;" , function (err, risp_tempo) {
-
             if (err) throw err;
-
             if(risp_tempo.length === 1){
-
-                console.log(risp_tempo[0]);
-                if (risp_tempo[0].username == 'topolino'){
-                    console.log('ok');
-                }
-                res.json(risp_tempo);
+                res.send(risp_tempo);
             } else {
-
-                console.log('\x1b[31m', 'NESSUN DATO RILEVATO PER TEMPO **********************');
-
+              res.send('risp_tempo');
             }
         })
 
