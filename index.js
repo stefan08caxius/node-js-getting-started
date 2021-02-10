@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
-
+/*
 const connection = mysql.createConnection({
   host: 'sql7.freemysqlhosting.net',
   port: 3306,
@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
 });
 
 connection.connect(function(err) {
-
+*/
   if (err) {
       return console.error('error: ' + err.message);
   }
@@ -33,4 +33,6 @@ connection.connect(function(err) {
               res.send('risp_tempo');
         })
       .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+      /*
 })
+*/
